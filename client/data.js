@@ -3,7 +3,7 @@ module.exports = function () {
         "book-list":
             [
                 {
-                    id: 1,
+                    _id: 1,
                     name: "Dune",
                     author: "Frank Herbert",
                     published: "1965",
@@ -11,7 +11,7 @@ module.exports = function () {
                     price: 10.95,
                 },
                 {
-                    id: 2,
+                    _id: 2,
                     name: "Blood Music",
                     author: "Greg Bear",
                     published: "1985",
@@ -19,7 +19,7 @@ module.exports = function () {
                     price: 19.95,
                 },
                 {
-                    id: 3,
+                    _id: 3,
                     name: "Ring World",
                     author: "Larry Niven",
                     published: "1970",
@@ -27,7 +27,7 @@ module.exports = function () {
                     price: 22.59,
                 },
                 {
-                    id: 4,
+                    _id: 4,
                     name: "I, Robot",
                     author: "Issac Asimov",
                     published: "1950",

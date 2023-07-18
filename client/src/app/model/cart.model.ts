@@ -10,27 +10,42 @@ export class Cart
 
     addLine(book: Book, quantity: number = 1): void
     {
+        //TODO:
+        // console.log(book.name + ' ' + book._id);
+
         const line = this.lines.find(l => l.book._id === book._id);
         if (line !== undefined)
         {
+            // console.log('not undefined');
             line.quantity += quantity;           
         }
         else
         {
+            // console.log('undefined');
             this.lines.push(new CartLine(book, quantity));
         }
         this.recalculate();
     }
 
-    updateQuantity(book: Book, quantity: number): void
-    {
+    // updateQuantity(book: Book, quantity: number): void
+    // {
+    //     const line = this.lines.find(l => l.book._id === book._id);
+    //     if (line !== undefined)
+    //     {
+    //         line.quantity = Number(quantity);
+    //     }
+    //     this.recalculate();
+    // }
+
+    updateQuantity(book: Book, event: Event): void {
+        const quantity = (event.target as HTMLInputElement).valueAsNumber;
         const line = this.lines.find(l => l.book._id === book._id);
-        if (line !== undefined)
-        {
-            line.quantity = Number(quantity);
+        if (line !== undefined) {
+            line.quantity = quantity;
         }
         this.recalculate();
     }
+
 
     removeLine(id: number): void
     {
@@ -61,8 +76,10 @@ export class Cart
 export class CartLine
 {
     constructor(public book: Book, 
-                public quantity: number)
-    {
+                public quantity: number){}
 
+    get lineTotal(): number
+    {
+        return this.quantity * this.book.price;
     }
 }
