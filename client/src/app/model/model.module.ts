@@ -10,6 +10,6 @@ import { Order } from "./order.model";
 @NgModule({
     imports: [HttpClientModule],
     providers: [BookRepository, StaticDataSource, Cart, Order, OrderRepository,
-    {provide: StaticDataSource, useClass: RestDataSource}]
+    {provide: StaticDataSource, useClass: RestDataSource}, RestDataSource]
 })
 export class ModelModule {}

@@ -81,16 +81,16 @@ module.exports.processLoginPage = (req, res, next) => {
                 expiresIn: 604800 // 1 week
             });
 
-            /* TODO - Getting Ready to convert to API
-            res.json({success: true, msg: 'User Logged in Successfully!', user: {
+            //TODO - Getting Ready to convert to API
+            return res.json({success: true, msg: 'User Logged in Successfully!', user: {
                 id: user._id,
                 displayName: user.displayName,
                 username: user.username,
                 email: user.email
             }, token: authToken});
-            */
 
-            return res.redirect('/book-list');
+
+            //return res.redirect('/book-list');
         });
     })(req, res, next);
 }
@@ -146,25 +146,28 @@ module.exports.processRegisterPage = (req, res, next) => {
 
             // redirect the user and authenticate them
 
-            /* TODO - Getting Ready to convert to API
-            res.json({success: true, msg: 'User Registered Successfully!'});
-            */
+            //TODO - Getting Ready to convert to API
+            return res.json({success: true, msg: 'User Registered Successfully!'});
 
-            return passport.authenticate('local')(req, res, () => {
-                res.redirect('/book-list')
-            });
+
+            // return passport.authenticate('local')(req, res, () => {
+            //     res.redirect('/book-list')
+            // });
         }
     });
 }
 
 module.exports.performLogout = (req, res, next) => {
-    req.logout((err) => {
-        if (err)
-        {
-            //handle error here
-            console.log(err);
-            return next(err);
-        }
-        return res.redirect('/');
-    });
+    // req.logout((err) => {
+    //     if (err)
+    //     {
+    //         //handle error here
+    //         console.log(err);
+    //         return next(err);
+    //     }
+    //     return res.redirect('/');
+    // });
+
+    req.logout();
+    res.json({success: true, msg: 'User Successfully Logged out!'});
 }

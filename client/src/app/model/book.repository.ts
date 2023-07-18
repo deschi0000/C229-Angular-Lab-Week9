@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Book } from "./book.model";
 import { StaticDataSource } from "./static.datasource";
+import { RestDataSource } from "./rest.datasource";
 
 @Injectable()
 export class BookRepository
@@ -9,7 +10,7 @@ export class BookRepository
     // private books: Book[] = new Array<Book>();
     private authors: string[] = [];
 
-    constructor( private dataSource: StaticDataSource )
+    constructor( private dataSource: RestDataSource )
     {
         dataSource.getBooks().subscribe(data => {
             this.books = data;
