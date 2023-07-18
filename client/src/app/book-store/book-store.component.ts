@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Book } from '../model/book.model';
 import { BookRepository } from '../model/book.repository';
 import { Cart } from '../model/cart.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,8 +18,9 @@ export class BookStoreComponent
   public selectedPage = 1;
 
 
-  constructor(private repository: BookRepository,
-              private cart: Cart){ }
+  constructor(private repository: BookRepository,     // Putting in Constructor-> Shorthand, gets initialized as variable available to the whole
+              private cart: Cart,
+              private router: Router){ }
 
   get books(): Book[]
   {
@@ -75,6 +77,7 @@ export class BookStoreComponent
 
   addBookToCart(book: Book): void
   {
-    this.cart.addLine(book )
+    this.cart.addLine(book);
+    this.router.navigateByUrl('/cart');
   }
 }
